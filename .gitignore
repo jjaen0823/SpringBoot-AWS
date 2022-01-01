@@ -43,4 +43,3 @@ build/
 
 ### OAuth 설정 ###
 oauthSecret.json
-application.yml
