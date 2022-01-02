@@ -23,7 +23,7 @@ class PostsRepositoryTest {
     }
 
     @Test
-    public void createPostsTest() {
+    public void createPosts() {
         // given
         String title = "test title";
         String content = "test content";
