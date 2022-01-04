@@ -1,5 +1,6 @@
 package com.example.freelecspringboot2webservice.domain.posts;
 
+import com.example.freelecspringboot2webservice.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor  // lombok
 @Entity  // JPA annotation : 실제 DB table 과 매칠 될 class
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
