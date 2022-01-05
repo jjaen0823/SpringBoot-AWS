@@ -16,6 +16,7 @@ public class PostsApiController {
 
     @PostMapping("/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+        System.out.println("POST: /api/v1/posts");
         return postsService.save(requestDto);
     }
 
@@ -26,6 +27,7 @@ public class PostsApiController {
 
     @PutMapping("/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+        System.out.println("PUT: /api/v1/posts/{id}");
         return postsService.update(id, requestDto);
     }
 }
