@@ -30,4 +30,10 @@ public class PostsApiController {
         System.out.println("PUT: /api/v1/posts/{id}");
         return postsService.update(id, requestDto);
     }
+    @DeleteMapping("/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        System.out.println("DELETE: /api/v1/posts/{id}");
+         postsService.delete(id);
+         return id;
+    }
 }
