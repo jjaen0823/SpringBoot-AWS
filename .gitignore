@@ -42,6 +42,5 @@ build/
 .vscode/
 
 ### OAuth 설정 ###
-oauthSecret.json
-
+application-oauth.yml
 /out
