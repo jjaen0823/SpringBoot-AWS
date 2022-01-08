@@ -35,20 +35,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
-        System.out.println("registrationId >>> " + registrationId);
-        System.out.println("userNameAttributeName >>> " + userNameAttributeName);
-
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
-        System.out.println("attributes >>> " + attributes);
 
         User user = saveOrUpdate(attributes);  // repository 에 있다면 update
         httpSession.setAttribute("user", new SessionUser(user));  // Session 생성
-        /* print OAuth2 Info */
-
-        System.out.println("oAuth2User.getAttributes() >>> " + oAuth2User.getAttributes());
-        System.out.println("user.getName() >>> " + user.getName());
-        System.out.println("Session user >>> " + httpSession.getAttribute("user"));
-        System.out.println(" >>> ");
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
