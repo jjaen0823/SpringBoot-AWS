@@ -1,8 +1,12 @@
 package com.example.freelecspringboot2webservice.web;
 
+import com.example.freelecspringboot2webservice.config.auth.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 //import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
@@ -11,11 +15,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 // @RunWith(SpringRunner.class) -> @ExtendWith 변경 (@SpringBootTest 와 @WebMvcTest 안에 있음)
-@WebMvcTest(controllers = HelloController.class)
+@WebMvcTest(controllers = HelloController.class,
+    excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})
 class HelloControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    @WithMockUser(roles = "USER")  // ROLE_USER 권한
     @Test
     void hello() throws Exception {
         String hello = "hello";
@@ -25,6 +31,7 @@ class HelloControllerTest {
                 .andExpect(content().string(hello));
     }
 
+    @WithMockUser(roles = "USER")  // ROLE_USER 권한
     @Test
     void helloDto() throws Exception {
         String name = "hello";
