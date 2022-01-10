@@ -35,6 +35,14 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.session/spring-session-jdbc
     implementation 'org.springframework.session:spring-session-jdbc'
 
+    // https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+//    implementation 'org.springframework.security:spring-security-core'
+
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-test
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 test {
