@@ -5,6 +5,8 @@ import com.example.freelecspringboot2webservice.config.auth.dto.SessionUser;
 import com.example.freelecspringboot2webservice.domain.user.User;
 import com.example.freelecspringboot2webservice.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -23,12 +25,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
+    // Logger
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /* loadUser
     * google, naver(social)로 부터 받은 userRequest data 에 대한 후처리 method
     * 해당 method 종료 시, @AuthenticationPrincipal annotation 이 만들어짐
     * */
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        logger.info("loadUser");
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
