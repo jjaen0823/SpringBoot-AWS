@@ -43,4 +43,5 @@ build/
 
 ### OAuth 설정 ###
 application-oauth.yml
+application-rds.yml
 /out
