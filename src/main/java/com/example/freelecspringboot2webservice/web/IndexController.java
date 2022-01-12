@@ -4,6 +4,7 @@ import com.example.freelecspringboot2webservice.config.auth.LoginUser;
 import com.example.freelecspringboot2webservice.config.auth.dto.SessionUser;
 import com.example.freelecspringboot2webservice.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
@@ -28,7 +30,7 @@ public class IndexController {
         // login 성공 시, OAuth2User loadUser 에서 SessionUser 저장 -> 로그인 성공 시 httpSession 에서 user 정보를 가져옴
 //        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if (user != null) {  // Session 에 user 가 있을 때만 View 에 넘겨줌
-            System.out.println(user);
+            log.info(user.getName());
             model.addAttribute("userName", user.getName());
         }
 
