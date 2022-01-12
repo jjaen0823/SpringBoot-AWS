@@ -31,7 +31,8 @@ public class IndexController {
 //        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if (user != null) {  // Session 에 user 가 있을 때만 View 에 넘겨줌
             log.info(user.getName());
-            model.addAttribute("userName", user.getName());
+//            model.addAttribute("userName", user.getName());
+            model.addAttribute("userName", "최재은");
         }
 
         return "index";  // src/main/resources/index.mustache
