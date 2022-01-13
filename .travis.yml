@@ -19,7 +19,7 @@ script: "./gradlew clean build"
 
 # 빌드 실패 시,
 after_failure:
-  - if [ -f /home/travis/build/…/index.html ]; then lynx -dump /home/travis/build/…/index.html; fi
+  - if [ -f /home/travis/build/jjaen0823/SpringBoot-AWS/build/reports/tests/test/index.html ]; then lynx -dump /home/travis/build/jjaen0823/SpringBoot-AWS/build/reports/tests/test/index.html; fi
 
 # CI 실행 완료 시 메일 알람
 notifications:
