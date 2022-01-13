@@ -15,7 +15,7 @@ cache:
 before_install:
   - chmod +x gradlew
 
-script: "./gradlew clean build"
+script: "./gradlew --stacktrace clean build"
 
 # 빌드 실패 시,
 after_failure:
