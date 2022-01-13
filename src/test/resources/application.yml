@@ -8,13 +8,8 @@ spring:
   profiles:
     include: oauth, rds
 
-  h2:
-    console:
-      enabled: true
-
   session:
     store-type: jdbc
-
 
   # Test OAuth
   security:
