@@ -1,8 +1,27 @@
 spring:
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
   profiles:
     include: oauth, rds
 
+  h2:
+    console:
+      enabled: true
+
   session:
     store-type: jdbc
-    jdbc:
-      initialize-schema: always
+
+
+  # Test OAuth
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: test
+            client-secret: test
+            scope:
+              - email
+              - profile
