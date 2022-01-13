@@ -17,9 +17,21 @@ before_install:
 
 script: "./gradlew clean build --stacktrace"
 
-# 빌드 실패 시,
-after_failure:
-  - if [ -f /home/travis/build/jjaen0823/SpringBoot-AWS/build/reports/tests/test/index.html ]; then lynx -dump /home/travis/build/jjaen0823/SpringBoot-AWS/build/reports/tests/test/index.html; fi
+before_depoly:
+  - zip -r freelec-springboot2-webservice *
+  - mkdir -p deploy
+  - mv freelec-springboot2-webservice.zip deploy/freelec-springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: freelec-springboot-build  # s3
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private  # zip file access : private
+    local_dir: deploy  # before_deploy
+    wait-until-deployed: true
 
 # CI 실행 완료 시 메일 알람
 notifications:
